@@ -3,13 +3,15 @@ on:
    push:
     branches: ["main"]
 jobs:
- mouni:
+ add-numbers:
    runs-on: ubuntu-latest
    steps: 
      
      - uses: actions/checkout@v4
-     - name: run a one line script
-       run: echo hello,world
+     - name: addition
+       run: echo 3+5=$((3+5))
+     - name: subtraction
+       run: echo 5-4=$((5-4))
       
       
      
