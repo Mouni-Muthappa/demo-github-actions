@@ -1,19 +1,20 @@
-name: Commit message Workflowww
-
+name: Commit message workflow - mouni
 on:
   push:
     branches:
       - main
-    
-
 jobs:
-  deploy:
-    if: contains(github.event.head_commit.message, '[deploy]')
-    runs-on: ubuntu-latest
+   deploy:
+     if: contains(github.event.head_commit.message, '[deploy]')
+     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+     steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
 
-      - name: Run deployment script
-        run: echo "Deploying application..."
+        - name: Run this script
+          run: echo "deploy this application"
+          
+
+      
+    
