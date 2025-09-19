@@ -1,0 +1,25 @@
+name: Multiple Jobs-vinayashree
+
+on:
+  push:
+    branches:
+      - vinayashree
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Step
+        run: echo "Building the project..."
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Test Step
+        run: echo "Running tests..."
