@@ -1,16 +1,19 @@
-name: Develop Branch Workflow
+name: Commit message Workflow
 
 on:
   push:
     branches:
-      - develop
+      - main
+   
 
 jobs:
-  build:
+  deploy:
+    if: contains(github.event.head_commit.message, '[deploy]')
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Run a script
-        run: echo "Running workflow on develop branch"
+      - name: Run deployment script
+        run: echo "Deploying application..."
