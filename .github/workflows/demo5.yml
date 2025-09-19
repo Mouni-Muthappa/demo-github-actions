@@ -1,4 +1,4 @@
-name: Commit message Workflow
+name: Commit message Workfloww
 
 on:
   push:
