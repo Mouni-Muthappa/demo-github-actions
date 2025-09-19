@@ -1,9 +1,9 @@
-name: Multiple Jobs-vinayashree
+name: Develop Branch Workflow
 
 on:
   push:
     branches:
-      - vinayashree
+      - develop
 
 jobs:
   build:
@@ -12,18 +12,5 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Build Step
-        run: echo "Building the project..."
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Test Step
-        run: echo "Running tests..."
-      
-     
- 
-
+      - name: Run a script
+        run: echo "Running workflow on develop branch"
