@@ -1,18 +1,28 @@
-name: Demo-CI
-on: 
-   push:
-    branches: ["main"]
+name: Multiple Jobs-vinayashree
+
+on:
+  push:
+    branches:
+      - vinayashree
+
 jobs:
- add-numbers:
-   runs-on: ubuntu-latest
-   steps: 
-     
-     - uses: actions/checkout@v4
-     - name: addition
-       run: echo 3+5=$((3+5))
-     - name: subtraction
-       run: echo 5-4=$((5-4))
-      
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Step
+        run: echo "Building the project..."
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Test Step
+        run: echo "Running tests..."
       
      
  
