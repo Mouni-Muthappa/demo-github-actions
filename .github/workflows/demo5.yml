@@ -1,20 +1,24 @@
-name: Commit message workflow - mouni
+name: Environment variables-mouni
 on:
   push:
     branches:
       - main
+env:
+  DAY_OF_WEEK: Monday
 jobs:
-   deploy:
-     if: contains(github.event.head_commit.message, '[deploy]')
+   demo:
      runs-on: ubuntu-latest
+     env:
+       Greetings: Hello
+       
 
      steps:
-        - name: Checkout code
-          uses: actions/checkout@v3
+        - name: Environment declaration
+          run: echo "$Greeting $First_name . Today is $DAY_OF_WEEK"
+          env:
+            First_name: Mouni
 
-        - name: Run this script
-          run: echo "deploy this application"
-          
+       
 
       
     
