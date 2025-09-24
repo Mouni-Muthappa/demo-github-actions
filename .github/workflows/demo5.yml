@@ -3,11 +3,11 @@ name: Commit Message Trigger-mouni
 on:
   push:
     branches:
-      - Vaishnavi
+      - main
 
 jobs:
   deploy:
-    runs-on: mouni
+    runs-on: Vaishnavi
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
