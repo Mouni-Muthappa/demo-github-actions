@@ -1,25 +1,21 @@
-name: Multiple Jobsss
-
+name: Secret Demo
 on:
   push:
     branches:
       - main
-
 jobs:
-  build:
+  show-secret:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Build Step
-        run: echo "Building the project..."
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Test Step
-        run: echo "Running tests..."
+      - name: Print secret (safe way)
+        run: echo "Secret is hidden"
+        env:
+          SECRET_VALUE: ${{ secrets.MY_SECRET }}
+      - name: Use secret in script
+        run: |
+          echo "Using secret safely"
+          echo "Length of secret: ${#SECRET_VALUE}"
+        env:
+          SECRET_VALUE: ${{ secrets.MY_SECRET }}
