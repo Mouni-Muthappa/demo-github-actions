@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Print secret (safe way)
+      - name: Print secret
         run: echo "Secret is hidden"
         env:
           SECRET_VALUE: ${{ secrets.MY_SECRET }}
