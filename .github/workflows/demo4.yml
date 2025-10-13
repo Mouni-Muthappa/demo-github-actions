@@ -23,10 +23,3 @@ jobs:
           echo "Length of secret: ${#SECRET_VALUE}"
         env:
           SECRET_VALUE: ${{ secrets.MY_SECRET }}
-
-  follow-up:
-    runs-on: ubuntu-latest
-    needs: show-secret
-    steps:
-      - name: Confirm success
-        run: echo "First job completed, Running follow-up task now."
