@@ -1,4 +1,4 @@
-name: Secret Demo
+name: Secret Demoo
 on:
   push:
     branches:
