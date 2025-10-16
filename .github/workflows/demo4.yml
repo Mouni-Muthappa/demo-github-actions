@@ -1,4 +1,4 @@
-name: Multi-OS Matrix Build
+name: Multi-OS Matrix Buildd
 
 on: [push]
 
