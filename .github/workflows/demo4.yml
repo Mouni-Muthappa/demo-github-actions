@@ -1,25 +1,23 @@
-name: Secret Demoo
+name: Multi-OS Matrix Build
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  show-secret:
-    runs-on: ubuntu-latest
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Print secret
-        run: echo "Secret is hidden"
-        env:
-          SECRET_VALUE: ${{ secrets.MY_SECRET }}
-
-      - name: Use secret in script
+      - name: Display system info
         run: |
-          echo "Using secret safely"
-          echo "Length of secret: ${#SECRET_VALUE}"
-        env:
-          SECRET_VALUE: ${{ secrets.MY_SECRET }}
+          echo "Running on ${{ runner.os }}"
+          uname -a || ver
+
+      - name: Run platform test
+        run: |
+          echo "Hello from $RUNNER_OS!"
