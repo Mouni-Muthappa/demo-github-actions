@@ -3,21 +3,23 @@ name: Multi-OS Matrix Build
 on: [push]
 
 jobs:
-  test:
+  build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-
+        os: [ubuntu-latest, windows-latest]
+        node: [14, 16]
+        include:
+          - os: macos-latest
+            node: 18
+        exclude:
+          - os: windows-latest
+            node: 14
+      max-parallel: 2
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Display system info
-        run: |
-          echo "Running on ${{ runner.os }}"
-          uname -a || ver
-
-      - name: Run platform test
-        run: |
-          echo "Hello from $RUNNER_OS!"
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --version
